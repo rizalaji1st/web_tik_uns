@@ -1,4 +1,8 @@
 @extends('layouts.admin')
+@section('title','Beranda admin')
+@section('content-header', 'Beranda admin')
+@section('route-first','Admin')
+@section('route-second','Beranda')
 @section('content')
     <!-- Default box -->
     <div class="card">
