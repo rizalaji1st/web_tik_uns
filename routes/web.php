@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Konten\KontenController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,13 +15,15 @@ use App\Http\Controllers\Admin\AdminController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::namespace('Admin')
         ->prefix('admin')
         ->name('admin.')
         ->group(function (){
             Route::get('/', [AdminController::class, 'index']);
+        });
+
+Route::namespace('Konten')
+        ->name('konten.')
+        ->group(function (){
+            Route::get('/', [KontenController::class, 'index']);
         });
