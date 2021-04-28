@@ -1,5 +1,5 @@
 <!-- Favicons -->
-<link href="{{ asset('assets/FlexStart/assets/img/favicon.png')}}" rel="icon">
+<link href="{{ asset('assets/FilePuskom/cropped-icon-uns.png')}}" rel="icon">
 <link href="{{ asset('assets/FlexStart/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
 <!-- Google Fonts -->

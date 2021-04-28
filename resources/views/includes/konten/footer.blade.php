@@ -6,15 +6,12 @@
         <div class="row gy-4">
           <div class="col-lg-5 col-md-12 footer-info">
             <a href="index.html" class="logo d-flex align-items-center">
-              <img src="{{ asset('assets/FlexStart/assets/img/logo.png')}}" alt="">
-              <span>UPT TIK UNS</span>
+              <img src="{{ asset('assets/FilePuskom/logo_dark.png')}}" alt="">
             </a>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+            <p>Jl. Insinyur Sutami, Jebres, Kec. Jebres, Kota Surakarta, Jawa Tengah 57126</p>
             <div class="social-links mt-3">
-              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bi bi-instagram bx bxl-instagram"></i></a>
-              <a href="#" class="linkedin"><i class="bi bi-linkedin bx bxl-linkedin"></i></a>
+              <a href="https://twitter.com/upttikuns" class="twitter"><i class="bi bi-twitter"></i></a>
+              <a href="https://instagram.com/upt.tikuns" class="instagram"><i class="bi bi-instagram bx bxl-instagram"></i></a>
             </div>
           </div>
 
@@ -30,7 +27,7 @@
           </div>
 
           <div class="col-lg-2 col-6 footer-links">
-            <h4>Our Services</h4>
+            <h4>Post Terbaru</h4>
             <ul>
               <li><i class="bi bi-chevron-right"></i> <a href="#">Web Design</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="#">Web Development</a></li>
@@ -43,11 +40,9 @@
           <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
             <h4>Contact Us</h4>
             <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
+              Jl. Insinyur Sutami, Jebres, Kec. Jebres, Kota Surakarta, Jawa Tengah 57126 <br><br>
+              <strong>Telp/Wa:</strong> <a href="https://wa.me/+6285890001103">0858 9000 1103</a> <br>
+              <strong>Email:</strong> <a href="mailto:sat@mail.uns.ac.id"> sat@mail.uns.ac.id </a><br>
             </p>
 
           </div>
@@ -58,14 +53,7 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>FlexStart</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexstart-bootstrap-startup-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        &copy; Copyright <strong><span>UPT TIK UNS 2019</span></strong>. All Rights Reserved
       </div>
     </div>
   </footer><!-- End Footer -->
