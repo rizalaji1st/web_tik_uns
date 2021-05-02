@@ -26,4 +26,25 @@
     ></script>
 
   </section><!-- End Hero -->
+
+  <!-- ======= Values Section ======= -->
+  <section id="values" class="values">
+
+    <div class="container" data-aos="fade-up">
+
+      <header class="section-header">
+        <h2>Lokasi Kami</h2>
+        <p>UPT. Teknologi Informasi dan Komunikasi (TIK)</p>
+      </header>
+
+      <div class="row">
+
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15820.608362272269!2d110.8571832!3d-7.5583906!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf243eb2b3adb9441!2sUPT.%20Teknologi%20Informasi%20dan%20Komunikasi%20(TIK)%20UNS!5e0!3m2!1sen!2sid!4v1619932337071!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+      </div>
+
+    </div>
+
+  </section><!-- End Values Section -->
+
 @endsection
