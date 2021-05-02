@@ -13,9 +13,9 @@
         <br>
         Jl. Insinyur Sutami, Jebres, Kec. Jebres, Kota Surakarta, Jawa Tengah 57126 <br>
         <br>
-        Telp : 0858 9000 1103 <br>
+        Telp : <a href="tel:+6285890001103">0858 9000 1103</a> <br>
         <br>
-        Wa : 0858 9000 1103 <br>
+        Wa : <a href="https://wa.me/+6285890001103">0858 9000 1103</a> <br>
     </div>
     <div id="map"></div>
 
