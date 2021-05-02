@@ -10,4 +10,16 @@ class KontenController extends Controller
     public function index(){
         return view('pages.konten.index');
     }
+
+    public function tentang(){
+        return view('pages.konten.tentang');
+    }
+
+    public function berita(){
+        return view('pages.konten.underConstruction');
+    }
+    
+    public function layanan(){
+        return view('pages.konten.underConstruction');
+    }
 }

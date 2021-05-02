@@ -26,4 +26,7 @@ Route::namespace('Konten')
         ->name('konten.')
         ->group(function (){
             Route::get('/', [KontenController::class, 'index']);
+            Route::get('/tentang', [KontenController::class, 'tentang']);
+            Route::get('/berita', [KontenController::class, 'berita']);
+            Route::get('/layanan', [KontenController::class, 'layanan']);
         });
