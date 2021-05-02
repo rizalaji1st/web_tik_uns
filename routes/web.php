@@ -26,11 +26,11 @@ Route::namespace('Admin')
 Route::namespace('Konten')
         ->name('konten.')
         ->group(function (){
-            Route::get('/', [KontenController::class, 'index']);
-            Route::get('/upt-tik-uns', [ProfilController::class, 'uptTik']);
-            Route::get('/visi-misi-dan-tujuan', [ProfilController::class, 'visiMisi']);
-            Route::get('/struktur-organisasi', [ProfilController::class, 'strukturOrganisasi']);
-            Route::get('/tentang', [KontenController::class, 'tentang']);
-            Route::get('/berita', [KontenController::class, 'berita']);
-            Route::get('/layanan', [KontenController::class, 'layanan']);
+            Route::get('/', [KontenController::class, 'index'])->name('index');
+            Route::get('/upt-tik-uns', [ProfilController::class, 'uptTik'])->name('uptTik');
+            Route::get('/visi-misi-dan-tujuan', [ProfilController::class, 'visiMisi'])->name('visiMisi');
+            Route::get('/struktur-organisasi', [ProfilController::class, 'strukturOrganisasi'])->name('strukturOrganisasi');
+            Route::get('/tentang', [KontenController::class, 'tentang'])->name('tentang');
+            Route::get('/berita', [KontenController::class, 'berita'])->name('berita');
+            Route::get('/layanan', [KontenController::class, 'layanan'])->name('layanan');
         });
