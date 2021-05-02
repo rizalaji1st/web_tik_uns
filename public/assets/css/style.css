@@ -1,0 +1,13 @@
+.section-title {
+    display: inline;
+    padding: 10px 20px;
+    background-color: #454545;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.section-content {
+    margin-top: 40px;
+    margin-left: 50px;
+    margin-bottom: 70px;
+}

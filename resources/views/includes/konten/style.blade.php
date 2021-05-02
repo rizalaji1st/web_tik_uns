@@ -22,3 +22,6 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 ======================================================== -->
+
+<!-- Custom CSS File -->
+<link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
