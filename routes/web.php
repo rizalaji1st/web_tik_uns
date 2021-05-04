@@ -34,3 +34,7 @@ Route::namespace('Konten')
             Route::get('/berita', [KontenController::class, 'berita'])->name('berita');
             Route::get('/layanan', [KontenController::class, 'layanan'])->name('layanan');
         });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
