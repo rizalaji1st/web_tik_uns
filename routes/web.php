@@ -19,6 +19,7 @@ use App\Http\Controllers\Konten\ProfilController;
 Route::namespace('Admin')
         ->prefix('admin')
         ->name('admin.')
+        ->middleware('can:admin-writer')
         ->group(function (){
             Route::get('/', [AdminController::class, 'index']);
         });
@@ -37,4 +38,3 @@ Route::namespace('Konten')
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
