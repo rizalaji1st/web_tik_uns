@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Konten\KontenController;
 use App\Http\Controllers\Konten\ProfilController;
+use App\Http\Controllers\Admin\ManajemenAkun\ManajemenAkunController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,17 @@ Route::namespace('Admin')
         ->middleware('can:admin-writer')
         ->group(function (){
             Route::get('/', [AdminController::class, 'index']);
+            Route::namespace('ManajemenAkun')
+                ->prefix('manajemen-akun')
+                ->name('manajemen-akun.')
+                ->group(function(){
+                    Route::get('/', [ManajemenAkunController::class, 'index']);
+                    Route::get('/create', [ManajemenAkunController::class, 'create']);
+                    Route::post('/create/store', [ManajemenAkunController::class, 'store']);
+                    Route::get('/update/{user}', [ManajemenAkunController::class, 'update']);
+                    Route::post('/update/{user}/store', [ManajemenAkunController::class, 'updateStore']);
+                    Route::post('/delete/{user}', [ManajemenAkunController::class, 'delete']);
+                });
         });
 
 Route::namespace('Konten')
@@ -36,5 +48,5 @@ Route::namespace('Konten')
             Route::get('/layanan', [KontenController::class, 'layanan'])->name('layanan');
         });
 
-Auth::routes();
+Auth::routes(['register' => false,'reset' => false]);
 

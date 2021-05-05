@@ -45,5 +45,6 @@
 <!-- ./wrapper -->
 
 @include('includes.admin.script')
+@yield('js')
 </body>
 </html>
