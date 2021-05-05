@@ -57,6 +57,6 @@ class ManajemenAkunController extends Controller
     public function delete(User $user){
         $user->delete();
 
-        return redirect('/admin/manajemen-akun')->with('success','Akun berhasil diupdate');
+        return redirect('/admin/manajemen-akun')->with('success','Akun berhasil dihapus');
     }
 }
