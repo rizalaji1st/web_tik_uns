@@ -1,0 +1,94 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: tik
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tik-dev
+  namespace: tik
+  labels:
+    app: tik
+    release: tik-dev
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: tik
+    release: tik-dev
+
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: tik-dev
+  namespace: tik
+spec:
+  rules:
+  - host: stag-tik.uns.ac.id
+    http:
+      paths:
+      - backend:
+          serviceName: tik-dev
+          servicePort: 80
+        path: /
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tik-dev
+  namespace: tik
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: tik
+      release: tik-dev
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 50%
+  template:
+    metadata:
+      labels:
+        app: tik
+        release: tik-dev
+    spec:
+      containers:
+      - name: backend-tik-dev
+        image: dockerhub.uns.ac.id:5000/tik:latest
+        livenessProbe:
+          httpGet:
+            path: "/i.php"
+            port: 80
+          periodSeconds: 70
+          failureThreshold: 50
+        command: ["/bin/sh"]
+        args: ["-c", "composer install && apache2-foreground"]
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
+        resources:
+          limits:
+            cpu: '0.9'
+          requests:
+            cpu: '0.1'
+        volumeMounts:
+        - mountPath: "/app/.env"
+          name: config
+          subPath: env
+      restartPolicy: Always
+      volumes:
+      - configMap:
+          defaultMode: 420
+          name: tik-web-dev
+        name: config
