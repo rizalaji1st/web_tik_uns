@@ -4,7 +4,7 @@ COPY composer.json /app/
 COPY composer.lock /app/
 RUN composer install --prefer-dist --no-dev --no-suggest --optimize-autoloader
 COPY package.json /app/
-COPY package-lock.json /app/
+#COPY package-lock.json /app/
 RUN npm install --production --prefer-offline --no-audit --no-optional
 
 FROM dockerhub.uns.ac.id:5000/php73:latest
