@@ -1,0 +1,56 @@
+stages:
+  - build
+  - testing
+  - release
+
+deploy_docker:
+  stage: build
+  before_script:
+    - docker pull dockerhub.uns.ac.id:5000/tik:builder || true
+    - docker pull dockerhub.uns.ac.id:5000/tik:latest || true
+    - docker pull dockerhub.uns.ac.id:5000/php73:latest || true
+  script:
+    - curl -o .env http://localhost:8500/v1/kv/tik/env?raw
+    - cp -Rf ~/ssh-docker74 ./.ssh
+    - docker build --target builder --tag dockerhub.uns.ac.id:5000/tik:builder .
+    - docker build --cache-from dockerhub.uns.ac.id:5000/tik:builder --cache-from dockerhub.uns.ac.id:5000/tik:latest --tag dockerhub.uns.ac.id:5000/tik:$CI_COMMIT_SHORT_SHA .
+  after_script:
+    - docker push dockerhub.uns.ac.id:5000/tik:builder
+    - docker push dockerhub.uns.ac.id:5000/tik:$CI_COMMIT_SHORT_SHA
+  environment:
+    name: production
+  only:
+    - master
+  tags:
+    - docker
+
+testing:
+  stage: testing
+  script:
+    - curl -o kubectl.cfg  http://localhost:8500/v1/kv/tik/kubeconfig?raw
+    - curl -o env  http://localhost:8500/v1/kv/tik/env?raw
+    - kubectl --kubeconfig kubectl.cfg apply -f deploy/k8s/namespace.yaml
+    - kubectl --namespace tik --kubeconfig kubectl.cfg  create configmap tik-web-dev --from-file env --dry-run -o yaml | kubectl --kubeconfig kubectl.cfg apply -f -
+    - sed -i -e 's/tik:latest/tik:'$CI_COMMIT_SHORT_SHA'/g' deploy/k8s/dev-tik.yaml
+    - kubectl --kubeconfig kubectl.cfg apply -f deploy/k8s/dev-tik.yaml
+  only:
+    - master
+  tags:
+    - docker
+
+release_production:
+  stage: release
+  script:
+    - docker image tag dockerhub.uns.ac.id:5000/tik:$CI_COMMIT_SHORT_SHA dockerhub.uns.ac.id:5000/tik:latest
+    - docker push dockerhub.uns.ac.id:5000/tik:latest
+    - curl -o kubectl.cfg  http://localhost:8500/v1/kv/tik/kubeconfig?raw
+    - curl -o env-production  http://localhost:8500/v1/kv/tik/env-production?raw
+    - kubectl --kubeconfig kubectl.cfg apply -f deploy/k8s/namespace.yaml
+    - kubectl --namespace tik --kubeconfig kubectl.cfg  create configmap tik-web --from-file env-production --dry-run -o yaml | kubectl --kubeconfig kubectl.cfg apply -f -
+    - sed -i -e 's/tik:latest/tik:'$CI_COMMIT_SHORT_SHA'/g' deploy/k8s/tik.yaml
+    - kubectl --kubeconfig kubectl.cfg apply -f deploy/k8s/tik.yaml
+  when: manual
+  only:
+    - master
+  tags:
+    - docker

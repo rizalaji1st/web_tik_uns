@@ -1,0 +1,112 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: tik
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tik
+  namespace: tik
+  labels:
+    app: tik
+    release: tik-01
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: tik
+    release: tik-01
+
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: tik
+  namespace: tik
+spec:
+  rules:
+  - host: tik.uns.ac.id
+    http:
+      paths:
+      - backend:
+          serviceName: tik
+          servicePort: 80
+        path: /
+---
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: tik
+  namespace: tik
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: tik
+  minReplicas: 2
+  maxReplicas: 12
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tik
+  namespace: tik
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: tik
+      release: tik-01
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 50%
+  template:
+    metadata:
+      labels:
+        app: tik
+        release: tik-01
+    spec:
+      containers:
+      - name: backend-tik
+        image: dockerhub.uns.ac.id:5000/tik:latest
+        livenessProbe:
+          httpGet:
+            path: "/i.php"
+            port: 80
+          periodSeconds: 10
+          failureThreshold: 3
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
+        resources:
+          limits:
+            cpu: '0.9'
+          requests:
+            cpu: '0.1'
+        volumeMounts:
+        - mountPath: "/app/.env"
+          name: config
+          subPath: env-production
+      restartPolicy: Always
+      volumes:
+      - configMap:
+          defaultMode: 420
+          name: tik-web
+        name: config
+
