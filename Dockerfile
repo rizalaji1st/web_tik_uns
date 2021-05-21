@@ -10,18 +10,6 @@ COPY package.json /app/
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
     apt-get update && apt-get install -y \
     nodejs \
-    build-essential \
-    mysql-client \
-    libpng-dev \
-    libjpeg62-turbo-dev \
-    libfreetype6-dev \
-    locales \
-    zip \
-    jpegoptim optipng pngquant gifsicle \
-    vim \
-    unzip \
-    git \
-    curl && \
     npm install -g npm
 
 RUN npm install --prefer-offline --no-audit --no-optional
