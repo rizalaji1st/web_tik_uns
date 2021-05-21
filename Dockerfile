@@ -8,9 +8,7 @@ COPY package.json /app/
 # RUN npm install --production --prefer-offline --no-audit --no-optional
 
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
-    apt-get update && apt-get install -y \
-    nodejs \
-    npm install -g npm
+    apt-get update && apt-get install nodejs
 
 RUN npm install --prefer-offline --no-audit --no-optional
 
