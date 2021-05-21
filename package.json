@@ -7,12 +7,12 @@
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
         "prod": "npm run production",
-        "production": "mix --production"
+        "production": "cross-env NODE_ENV=production"
     },
     "devDependencies": {
         "axios": "^0.21",
         "cross-env": "^7.0.3",
-        "laravel-mix": "git+https://github.com/JeffreyWay/laravel-mix.git",
+        "laravel-mix": "^6.0.19",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14"
     }
