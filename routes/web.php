@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Konten\KontenController;
 use App\Http\Controllers\Konten\ProfilController;
 use App\Http\Controllers\Admin\ManajemenAkun\ManajemenAkunController;
+use App\Http\Controllers\Admin\ManajemenKonten\ManajemenKontenController;
+use App\Http\Controllers\Admin\ManajemenKategori\ManajemenKategoriController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +35,28 @@ Route::namespace('Admin')
                     Route::get('/update/{user}', [ManajemenAkunController::class, 'update']);
                     Route::post('/update/{user}/store', [ManajemenAkunController::class, 'updateStore']);
                     Route::post('/delete/{user}', [ManajemenAkunController::class, 'delete']);
+                });
+            Route::namespace('ManajemenKategori')
+                ->prefix('manajemen-kategori')
+                ->name('manajemen-kategori.')
+                ->group(function(){
+                    Route::get('/', [ManajemenKategoriController::class, 'index']);
+                    Route::get('/create', [ManajemenKategoriController::class, 'create']);
+                    Route::post('/create/store', [ManajemenKategoriController::class, 'store']);
+                    Route::get('/update/{kategori}', [ManajemenKategoriController::class, 'update']);
+                    Route::post('/update/{kategori}/store', [ManajemenKategoriController::class, 'updateStore']);
+                    Route::post('/delete/{kategori}', [ManajemenKategoriController::class, 'delete']);
+                });
+            Route::namespace('ManajemenKonten')
+                ->prefix('manajemen-konten')
+                ->name('manajemen-konten.')
+                ->group(function(){
+                    Route::get('/', [ManajemenKontenController::class, 'index']);
+                    Route::get('/create', [ManajemenKontenController::class, 'create']);
+                    Route::post('/create/store', [ManajemenKontenController::class, 'store']);
+                    Route::get('/update/{user}', [ManajemenKontenController::class, 'update']);
+                    Route::post('/update/{user}/store', [ManajemenKontenController::class, 'updateStore']);
+                    Route::post('/delete/{user}', [ManajemenKontenController::class, 'delete']);
                 });
         });
 
