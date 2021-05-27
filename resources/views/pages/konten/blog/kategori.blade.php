@@ -40,7 +40,7 @@
                 @endphp
                 <div class="entry-content">
                     @if (count(explode('</p>',$konten->konten)) > 3)
-                        {!! $arrDeskripsi[0].'</p>'.arrDeskripsi[1].'</p>'.arrDeskripsi[2].'</p>' !!}
+                       {!! $arrDeskripsi[0].'</p>'.$arrDeskripsi[1].'</p>'.$arrDeskripsi[2].'</p>' !!}
                     @else
                         {!! $konten->konten !!}
                     @endif

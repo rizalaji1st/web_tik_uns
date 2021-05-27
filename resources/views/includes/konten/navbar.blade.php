@@ -16,8 +16,8 @@
               <li><a href="{{url('/struktur-organisasi')}}">Struktur Organisasi</a></li>
             </ul>
           </li>
-          <li><a class="nav-link scrollto @yield('beritaActive')" href="{{url('/berita')}}">Berita</a></li>
-          <li><a class="nav-link scrollto @yield('layananActive')" href="{{url('/layanan')}}">Layanan</a></li>
+          <li><a class="nav-link scrollto @yield('beritaActive')" href="{{url('/blog/berita')}}">Berita</a></li>
+          <li><a class="nav-link scrollto @yield('layananActive')" href="{{url('/blog/layanan')}}">Layanan</a></li>
           <li><a class="nav-link scrollto @yield('tentangActive')" href="{{url('/tentang')}}">Tentang</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
