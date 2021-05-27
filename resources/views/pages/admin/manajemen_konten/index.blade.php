@@ -43,9 +43,9 @@
                         @endif
                     </th>
                     <th>
-                        <a class="btn btn-sm btn-warning" href="{{url('admin/manajemen-akun/update/'.$konten->id)}}">Edit</a>
+                        <a class="btn btn-sm btn-warning" href="{{url('admin/manajemen-konten/update/'.$konten->id)}}">Edit</a>
                         <button class="btn btn-sm btn-danger" onclick="sweetDelete('{{$konten->id}}')">Delete</button> 
-                        <form method="POST" action="{{url('/admin/manajemen-akun/delete/'.$konten->id)}}" id="delete{{$konten->id}}">
+                        <form method="POST" action="{{url('/admin/manajemen-konten/delete/'.$konten->id)}}" id="delete{{$konten->id}}">
                             @csrf
                         </form>
                     </th>

@@ -54,9 +54,9 @@ Route::namespace('Admin')
                     Route::get('/', [ManajemenKontenController::class, 'index']);
                     Route::get('/create', [ManajemenKontenController::class, 'create']);
                     Route::post('/create/store', [ManajemenKontenController::class, 'store']);
-                    Route::get('/update/{user}', [ManajemenKontenController::class, 'update']);
-                    Route::post('/update/{user}/store', [ManajemenKontenController::class, 'updateStore']);
-                    Route::post('/delete/{user}', [ManajemenKontenController::class, 'delete']);
+                    Route::get('/update/{konten}', [ManajemenKontenController::class, 'update']);
+                    Route::post('/update/{konten}/store', [ManajemenKontenController::class, 'updateStore']);
+                    Route::post('/delete/{konten}', [ManajemenKontenController::class, 'delete']);
                 });
         });
 
