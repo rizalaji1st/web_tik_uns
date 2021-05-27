@@ -27,9 +27,21 @@
                   <tr>
                     <th scope="row">{{$loop->iteration}}</th>
                     <th>{{$konten->judul}}</th>
-                    <th>{{$konten->email}}</th>
-                    <th>{{$konten->is_active}}</th>
-                    <th>{{$konten->is_main}}</th>
+                    <th>{{$konten->refKategori->nama}}</th>
+                    <th class="lead">
+                        @if ((int) $konten->is_active)
+                            <span class="badge badge-success">Ya</span>
+                        @else
+                            <span class="badge badge-danger">Tidak</span>
+                        @endif
+                    </th>
+                    <th class="lead">
+                        @if ((int) $konten->is_main)
+                            <span class="badge badge-success">Ya</span>
+                        @else
+                            <span class="badge badge-danger">Tidak</span>
+                        @endif
+                    </th>
                     <th>
                         <a class="btn btn-sm btn-warning" href="{{url('admin/manajemen-akun/update/'.$konten->id)}}">Edit</a>
                         <button class="btn btn-sm btn-danger" onclick="sweetDelete('{{$konten->id}}')">Delete</button> 

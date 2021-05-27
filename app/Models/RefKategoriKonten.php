@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Konten;
 
 class RefKategoriKonten extends Model
 {
@@ -20,4 +21,8 @@ class RefKategoriKonten extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function konten(){
+        return $this->belongsTo(Konten::class);
+    }
 }
