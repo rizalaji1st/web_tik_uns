@@ -11,3 +11,5 @@
 <!-- Sweet Alert -->
 @include('sweetalert::alert')
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!-- Tiny MCE -->
+<script src="https://cdn.tiny.cloud/1/wej8ew5swf4csl68jbbl205zp3u6yscxidvd1iicyflflvlx/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>

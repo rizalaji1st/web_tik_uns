@@ -1,46 +1,66 @@
 @extends('layouts.admin')
-@section('title','Tambah Akun')
-@section('manajemenAkunActive', 'menu-open')
-@section('content-header', 'Tambah Akun')
+@section('title','Manajemen Konten')
+@section('manajemenKontenActive', 'menu-open')
+@section('content-header', 'Manajemen Konten')
 @section('route-first','Admin')
-@section('route-second','Tambah Akun')
+@section('route-second','Manajemen Konten')
 @section('content')
     <!-- Default box -->
-    <div class="card p-4 row m-4">
-        <h3>Tambah Akun</h3>
-        <hr>
-        <div class="col-lg-6">
-            <form method="POST" action="{{ url('/admin/manajemen-akun/create/store')}}" autocomplete="off">
-                @csrf
+    <form method="POST" action="{{ url('/admin/manajemen-konten/create/store')}}" autocomplete="off" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-12 p-4">
+            <div class="card bg-light">
+                <div class="card-header">
+                    <h4><i class="fas fa-file-alt"></i> Buat Post Baru</h4>
+                </div>
+                <div class="card-body">
+                    @csrf
                     <div class="mb-3">
-                        <label for="name" class="form-label">Nama</label>
-                        <input type="text" name="name" class="form-control" id="name">
+                        <label for="judul" class="form-label">Judul</label>
+                        <input type="text" name="judul" class="form-control" id="judul">
                     </div>
                     <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="text" name="email" class="form-control" id="email">
+                        <label for="konten" class="form-label">Isi Konten</label>
+                        <textarea name="konten" class="form-control" id="konten"></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" name="password" class="form-control" id="password">
+                        <label for="kategori" class="form-label">Kategori</label>
+                        <select name="kategori" id="kategori" class="form-control">
+                            <option value="">-- Select Kategori --</option>
+                            @foreach ($kategoris as $kategori)
+                                <option value="{{$kategori->id}}">{{$kategori->nama}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="mb-3">
-                        @foreach ($roles as $role)
-                            <div class="form-check">
-                                <input class="form-check-input" name="roles[]" type="checkbox" value="{{$role->id}}" id="{{$role->nama}}">
-                                <label class="form-check-label" for="{{$role->name}}">{{$role->nama}}</label>
-                            </div>
-                        @endforeach
+                        <label for="isActive" class="form-label">Apakah Aktif</label>
+                        <select name="isActive" id="isActive" class="form-control">
+                            <option value="1" selected>Ya</option>
+                            <option value="0">Tidak</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="isMain" class="form-label">Apakah Tampil Di Carousel</label>
+                        <select name="isMain" id="isMain" class="form-control">
+                            <option value="1" selected>Ya</option>
+                            <option value="0">Tidak</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="file" class="form-label">Gambar Post</label>
+                        <input type="file" class="form-control" name="file" id="file">
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+                </div>
+            </div>
         </div>
     </div>
+    </form>
 @endsection
 @section('js')
     <script>
-        $(document).ready( function () {
-            $('#myTable').DataTable();
-        } );
-    </script>
+    tinymce.init({
+      selector: 'textarea',
+   });
+  </script>
 @endsection

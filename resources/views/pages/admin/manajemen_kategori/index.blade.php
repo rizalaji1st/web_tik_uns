@@ -8,7 +8,7 @@
     <!-- Default box -->
     <div class="container-fluid card p-4">
         <div>
-            <a class="btn btn-success" href="{{url('/admin/manajemen-kategori/create')}}" >Tambah Akun</a>
+            <a class="btn btn-success" href="{{url('/admin/manajemen-kategori/create')}}" >Tambah Kategori</a>
         </div>
         <hr>
         <table class="table" id="myTable">
