@@ -7,6 +7,7 @@ use App\Http\Controllers\Konten\ProfilController;
 use App\Http\Controllers\Admin\ManajemenAkun\ManajemenAkunController;
 use App\Http\Controllers\Admin\ManajemenKonten\ManajemenKontenController;
 use App\Http\Controllers\Admin\ManajemenKategori\ManajemenKategoriController;
+use App\Http\Controllers\Konten\Blog\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,12 +65,22 @@ Route::namespace('Konten')
         ->name('konten.')
         ->group(function (){
             Route::get('/', [KontenController::class, 'index'])->name('index');
+            Route::get('/konten/{slug}', [KontenController::class, 'konten'])->name('konten');
+            Route::get('/post', [KontenController::class, 'post'])->name('post');
             Route::get('/upt-tik-uns', [ProfilController::class, 'uptTik'])->name('uptTik');
             Route::get('/visi-misi-dan-tujuan', [ProfilController::class, 'visiMisi'])->name('visiMisi');
             Route::get('/struktur-organisasi', [ProfilController::class, 'strukturOrganisasi'])->name('strukturOrganisasi');
             Route::get('/tentang', [KontenController::class, 'tentang'])->name('tentang');
             Route::get('/berita', [KontenController::class, 'berita'])->name('berita');
             Route::get('/layanan', [KontenController::class, 'layanan'])->name('layanan');
+            Route::namespace('Blog')
+                ->name('blog.')
+                ->prefix('blog')
+                ->group(function (){
+                    Route::get('/', [BlogController::class, 'index'])->name('index');
+                    Route::get('/{kategori}', [BlogController::class, 'kategori'])->name('kategori');
+                    Route::get('/detail/{slug}', [BlogController::class, 'blog'])->name('blog');
+                });
         });
 
 Auth::routes(['register' => false,'reset' => false]);

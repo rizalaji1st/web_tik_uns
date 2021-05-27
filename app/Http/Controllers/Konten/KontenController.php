@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Konten;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Konten;
+use App\Models\User;
 
 class KontenController extends Controller
 {

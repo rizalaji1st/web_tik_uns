@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\RefKategoriKonten;
+use App\Models\User;
 
 class Konten extends Model
 {
@@ -30,5 +31,9 @@ class Konten extends Model
 
     public function refKategori(){
         return $this->hasOne(RefKategoriKonten::class,'id','id_kategori');
+    }
+
+    public function createdBy(){
+        return $this->hasOne(User::class,'id','created_by');
     }
 }
