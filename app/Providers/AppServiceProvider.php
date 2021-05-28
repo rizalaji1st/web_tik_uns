@@ -28,10 +28,9 @@ class AppServiceProvider extends ServiceProvider
     {
         config(['app.locale' => 'id']);
 	    Carbon::setLocale('id');
-        $tipe = explode(':',url('/'));
 
         //if(env('APP_ENV') !== 'local') { 
-            $url->forceScheme($tipe[0]); 
+            $url->forceScheme('https'); 
         //}
     }
 }
