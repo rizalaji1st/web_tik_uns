@@ -38,8 +38,8 @@
                     $arrDeskripsi = explode('</p>',$konten->konten)
                 @endphp
                 <div class="entry-content">
-                    @if (count(explode('</p>',$konten->konten)) > 3)
-                        {!! $arrDeskripsi[0].'</p>'.$arrDeskripsi[1].'</p>'.$arrDeskripsi[2].'</p>' !!}
+                    @if (count(explode('</p>',$konten->konten)) > 1)
+                        {!! $arrDeskripsi[0].'</p>' !!}
                     @else
                         {!! $konten->konten !!}
                     @endif

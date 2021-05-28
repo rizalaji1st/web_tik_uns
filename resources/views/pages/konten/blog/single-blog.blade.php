@@ -36,7 +36,7 @@
                 </ul>
                 </div>
 
-                <div class="entry-content">
+                <div class="entry-content mb-5">
                     {!! $konten->konten !!}
                 </div>
 

@@ -19,16 +19,21 @@
             <h4>Useful Links</h4>
             <ul>
               <li><i class="bi bi-chevron-right"></i> <a href="{{ route('konten.index') }}">Beranda</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="{{ route('konten.berita') }}">Berita</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="{{ route('konten.layanan') }}">Layanan</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="{{ url('/blog/berita') }}">Berita</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="{{ url('/blog/layanan') }}">Layanan</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="{{ route('konten.tentang') }}">Tentang Kami</a></li>
             </ul>
           </div>
 
           <div class="col-lg-2 col-6 footer-links">
             <h4>Post Terbaru</h4>
+            @php
+                $kontenFooters = \App\Models\Konten::where('is_active',true)->orderBy('id','desc')->take(5)->get();
+            @endphp
             <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Belum ada</a></li>
+              @foreach ($kontenFooters as $kontenFooter)
+                <li><i class="bi bi-chevron-right"></i> <a href="{{url('/blog/detail/'.$kontenFooter->slug)}}">{{\Illuminate\Support\Str::limit($kontenFooter->judul,20)}}</a></li>
+              @endforeach
             </ul>
           </div>
 
