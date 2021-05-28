@@ -14,7 +14,7 @@ class RefKategoriKontenTableSeeder extends Seeder
      */
     public function run()
     {
-        RefKategoriKonten::truncate();
+        RefKategoriKonten::query()->delete();
 
         RefKategoriKonten::create(['nama' => 'layanan']);
         RefKategoriKonten::create(['nama' => 'berita']);

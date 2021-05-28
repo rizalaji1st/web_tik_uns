@@ -27,14 +27,14 @@
 
           <div class="col-lg-2 col-6 footer-links">
             <h4>Post Terbaru</h4>
-            @php
+            {{-- @php
                 $kontenFooters = \App\Models\Konten::where('is_active',true)->orderBy('id','desc')->take(5)->get();
             @endphp
             <ul>
               @foreach ($kontenFooters as $kontenFooter)
                 <li><i class="bi bi-chevron-right"></i> <a href="{{url('/blog/detail/'.$kontenFooter->slug)}}">{{\Illuminate\Support\Str::limit($kontenFooter->judul,20)}}</a></li>
               @endforeach
-            </ul>
+            </ul> --}}
           </div>
 
           <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">

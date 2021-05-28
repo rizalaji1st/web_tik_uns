@@ -18,14 +18,14 @@ class CreateKontenTable extends Migration
             $table->string('judul');
             $table->string('slug');
             $table->text('konten');
-            $table->bigInteger('id_kategori');
+            $table->unsignedBigInteger('id_kategori');
             $table->boolean('is_active');
             $table->boolean('is_main');
             $table->string('path_gambar');
             $table->dateTime('created_at')->nullable();
-            $table->bigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
             $table->dateTime('updated_at')->nullable();
-            $table->bigInteger('updated_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
         });
     }
 
