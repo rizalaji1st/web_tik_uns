@@ -22,7 +22,7 @@
             <article class="entry">
 
                 <div class="entry-img">
-                <img src="{{Storage::url($konten->path_gambar)}}" alt="" class="img-fluid" style="width: 100%">
+                <img src="{{Storage::disk('minio')->temporaryUrl($konten->path_gambar,now()->addMinutes(5000))}}" alt="" class="img-fluid" style="width: 100%">
                 </div>
 
                 <h2 class="entry-title">
@@ -72,7 +72,7 @@
                 <div class="sidebar-item recent-posts">
                 @foreach ($latest_kontens as $konten)
                     <div class="post-item clearfix">
-                        <img src="{{Storage::url($konten->path_gambar)}}" alt="">
+                        <img src="{{Storage::disk('minio')->temporaryUrl($konten->path_gambar,now()->addMinutes(5000))}}" alt="">
                         <h4><a href="{{url('/blog/detail/'.$konten->slug)}}">{{$konten->judul}}</a></h4>
                         <time datetime="2020-01-01">{{$konten->created_at->format('d F y')}}</time>
                     </div>
