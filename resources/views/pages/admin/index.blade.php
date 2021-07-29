@@ -7,7 +7,7 @@
     <!-- Default box -->
     <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Hooray</h3>
+          <h3 class="card-title">Selamat datang {{$user->name}}</h3>
 
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -19,13 +19,9 @@
           </div>
         </div>
         <div class="card-body">
-          adminLTE udah include gais, selamat lanjut ngodonf
+          Selamat datang di dashboard admin web TIK UNS
         </div>
         <!-- /.card-body -->
-        <div class="card-footer">
-          ini cuma Footer
-        </div>
-        <!-- /.card-footer-->
       </div>
       <!-- /.card -->
 @endsection
